@@ -1,0 +1,1 @@
+LPLab10.exe -in:E:\code\vs\sem2\LPLab10\LPLab10\in.txt -out:E:\code\vs\sem2\LPLab10\LPLab10\out.txt -log:E:\code\vs\sem2\LPLab10\LPLab10\log.txt
