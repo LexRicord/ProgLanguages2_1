@@ -1,0 +1,13 @@
+Тест: без ошибок 
+
+----------- ПРОТОКОЛ -----------
+ ----------- 21.10.21 18:42:24 -----------
+ 
+ ----------- ПАРАМЕТРЫ ----------- 
+
+-in: E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\
+-out: E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\.out
+-log: E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\.log
+
+Ошибка 110: Ошибка при открытии файла с исходным кодом (-in)
+Строка -1 позиция -1
