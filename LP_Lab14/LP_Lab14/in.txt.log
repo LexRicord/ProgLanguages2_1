@@ -1,13 +1,13 @@
 Тест: без ошибок 
 
 ----------- ПРОТОКОЛ -----------
- ----------- 27.10.21 17:10:57 -----------
+ ----------- 28.10.21 17:51:11 -----------
  
  ----------- ПАРАМЕТРЫ ----------- 
 
--in: E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\in.txt
--out: E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\in.txt.out
--log: E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\in.txt.log
+-in: D:\repos\ProgLanguages2_1\LP_Lab14\LP_Lab14\in.txt
+-out: D:\repos\ProgLanguages2_1\LP_Lab14\LP_Lab14\in.txt.out
+-log: D:\repos\ProgLanguages2_1\LP_Lab14\LP_Lab14\in.txt.log
 
 ----------- ИСХОДНЫЕ ДАННЫЕ -----------
 integer function fi(integer x, integer y)

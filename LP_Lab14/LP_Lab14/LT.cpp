@@ -44,11 +44,19 @@ namespace LT
 
 		if (lex_stream->is_open())
 		{
-			int num_string = 0;
+			int num_string=0,t = 0;
 			for (int i = 0; i < this->size;)
 			{
-				if (num_string == this->table[i].sourceNumber)
-					(*lex_stream) << this->table[i++].lexToken;
+				if (num_string == this->table[i].sourceNumber) {
+					if (this->table[i].lexToken == 'i') {
+						t = this->table[i].indexTI;
+						(*lex_stream) << this->table[i++].lexToken;
+						(*lex_stream) << t;
+					}
+					else {
+						(*lex_stream) << this->table[i++].lexToken;
+					}
+				}
 				else
 				{
 					num_string++;
@@ -83,11 +91,19 @@ namespace LT
 
 		if (lex_stream->is_open())
 		{
-			int num_string = 0;
+			int num_string = 0, t = 0;
 			for (int i = 0; i < this->size;)
 			{
-				if (num_string == this->table[i].sourceNumber)
-					(*lex_stream) << this->table[i++].lexToken;
+				if (num_string == this->table[i].sourceNumber) {
+					if (this->table[i].lexToken == 'i') {
+						t = this->table[i].indexTI;
+						(*lex_stream) << this->table[i++].lexToken;
+						(*lex_stream) <<t;
+					}
+					else {
+						(*lex_stream) << this->table[i++].lexToken;
+					}
+				}
 				else
 				{
 					num_string++;
