@@ -2,7 +2,7 @@
 
 #include <string.h>
 #include "stdafx.h"
-
+#include "LT.h"
 
 namespace IT
 {
@@ -38,7 +38,46 @@ namespace IT
 		this->idType = idType;
 		this->parmQuantity = 0;
 	}
+	Entry::Entry(const char* parentFunc, const char* id, ID_DATA_TYPE idDataType, ID_TYPE idType, int firstInput, int index)
+	{
+		int i = 0;
+		if (parentFunc)
+			for (i = 0; parentFunc[i] != '\0'; i++)
+				this->parentFunc[i] = parentFunc[i];
+		this->parentFunc[i] = '\0';
+
+		i = 0;
+		if (id)
+			for (i = 0; id[i] != '\0'; i++)
+				this->id[i] = id[i];
+		this->id[i] = '\0';
+
+		this->idDataType = idDataType;
+		this->idType = idType;
+		this->parmQuantity = 0;
+		this->index = index;
+		(this->firstInput < firstInput) ? this->firstInput = firstInput : this->firstInput = this->firstInput;
+	}
 	Entry::Entry(char* parentFunc, char* id, ID_DATA_TYPE idDataType, ID_TYPE idType)
+	{
+		int i = 0;
+		if (parentFunc)
+			for (i = 0; parentFunc[i] != '\0'; i++)
+				this->parentFunc[i] = parentFunc[i];
+		this->parentFunc[i] = '\0';
+
+		i = 0;
+		if (id)
+			for (i = 0; id[i] != '\0'; i++)
+				this->id[i] = id[i];
+		this->id[i] = '\0';
+		
+		this->idDataType = idDataType;
+		this->idType = idType;
+		this->parmQuantity = 0;
+		this->value.valueStr->len = 0;
+	}
+	Entry::Entry(char* parentFunc, char* id, ID_DATA_TYPE idDataType, ID_TYPE idType, int firstInput , int index)
 	{
 		int i = 0;
 		if (parentFunc)
@@ -56,6 +95,9 @@ namespace IT
 		this->idType = idType;
 		this->parmQuantity = 0;
 		this->value.valueStr->len = 0;
+		this->index = index;
+		(this->firstInput < firstInput) ? this->firstInput = firstInput : this->firstInput = this->firstInput;
+
 	}
 
 	IdentTable Create(int size)
@@ -76,7 +118,6 @@ namespace IT
 			if (entry.idType != ID_TYPE::F)
 				entry.id[5] = '\0';
 			this->table[this->size] = entry;
-
 			switch (entry.idDataType)
 			{
 			case ID_DATA_TYPE::INT:
@@ -113,8 +154,7 @@ namespace IT
 	{
 		for (int i = 0; i < this->size; i++)
 		{
-			if ((strcmp(this->table[i].id, id) == 0) &&
-				(strcmp(this->table[i].parentFunc, parentFunc) == 0))
+			if ((strcmp(this->table[i].id, id) == 0) && (strcmp(this->table[i].parentFunc, parentFunc) == 0))
 				return i;
 		}
 		return TI_NULLIDX;
@@ -146,7 +186,7 @@ namespace IT
 			*(idStream) << "====================================================================================" << std::endl;
 			*(idStream) << "| Литералы |" << std::endl;
 			*(idStream) << "====================================================================================" << std::endl;
-			*(idStream) << '|' << std::setw(15) << "Идентификатор: " << std::setw(15) << "Тип данных: " << "|" << std::setw(20) << "Значение: " << '|' << std::setw(20) << "Длина строки: " << '|' << std::endl;
+			*(idStream) << '|' << std::setw(15) << "Идентификатор: " <<'|' << std::setw(15) << "Индекс: " << std::setw(15) << "Тип данных: " << "|" << std::setw(20) << "Значение: " << '|' << std::setw(20) << "Длина строки: " << '|' << std::endl;
 			*(idStream) << "===================================================================================" << std::endl;
 
 			for (int i = 0; i < this->size; i++)
@@ -158,12 +198,12 @@ namespace IT
 					{
 					case 1:
 					{
-						*(idStream) << '|' << std::setw(15) << this->table[i].id << '|' << std::setw(15) << "INT " << '|' << std::setw(20) << this->table[i].value.valueInt << '|' << std::setw(15) << "-" << '|' << std::endl;
+						*(idStream) << '|' << std::setw(15) << this->table[i].id << '|' << std::setw(15) << this->table[i].firstInput << '|' << std::setw(15) << "INT " << '|' << std::setw(20) << this->table[i].value.valueInt << '|' << std::setw(15) << "-" << '|' << std::endl;
 						break;
 					}
 					case 2:
 					{
-						*(idStream) << '|' << std::setw(15) << this->table[i].id << '|' << std::setw(15) << "STR " << '|' << std::setw(20) << this->table[i].value.valueStr->str << '|' << std::setw(15) << (int)this->table[i].value.valueStr->len << '|' << std::endl;
+						*(idStream) << '|' << std::setw(15) << this->table[i].id << '|' << std::setw(15) << this->table[i].firstInput << '|' << std::setw(15) << "STR " << '|' << std::setw(20) << this->table[i].value.valueStr->str << '|' << std::setw(15) << (int)this->table[i].value.valueStr->len << '|' << std::endl;
 						break;
 					}
 					}
@@ -174,7 +214,7 @@ namespace IT
 
 
 #pragma endregion
-			* (idStream) << "\n\n\n";
+			* (idStream) << "\n";
 #pragma region Functions
 
 			flagForFirst = false;
@@ -182,24 +222,23 @@ namespace IT
 			*(idStream) << "=============================================================================" << std::endl;
 			*(idStream) << "| Функции |" << std::endl;
 			*(idStream) << "=============================================================================" << std::endl;
-			*(idStream) << '|' << std::setw(20) << "Идентификатор: " << '|' << std::setw(25) << "Тип данных возврата: " << '|' << std::setw(35) << "Количество переданных параметров: " << '|' << std::endl;
+			*(idStream) << '|' << std::setw(20) << "Идентификатор: " << '|' << std::setw(20) << "Индекс: " << '|' << std::setw(25) << "Тип данных возврата: " << '|' << std::setw(30) << "Количество переданных параметров: " << '|' << std::endl;
 			*(idStream) << "=============================================================================" << std::endl;
 
 			for (int i = 0; i < this->size; i++)
 			{
 				if (this->table[i].idType == IT::ID_TYPE::F)
 				{
-
 					switch (this->table[i].idDataType)
 					{
 					case 1:
 					{
-						*(idStream) << '|' << std::setw(20) << this->table[i].id << '|' << std::setw(25) << "INT " << '|' << std::setw(35) << this->table[i].parmQuantity << '|' << std::endl;
+						*(idStream) << '|' << std::setw(20) << this->table[i].id << '|' << std::setw(20) << this->table[i+1].firstInput << '|' << std::setw(25) << "INT " << '|' << std::setw(30) << this->table[i].parmQuantity << '|' << std::endl;
 						break;
 					}
 					case 2:
 					{
-						*(idStream) << '|' << std::setw(20) << this->table[i].id << '|' << std::setw(25) << "STR " << '|' << std::setw(35) << this->table[i].parmQuantity << '|' << std::endl;
+						*(idStream) << '|' << std::setw(20) << this->table[i].id << '|' << std::setw(20) << this->table[i+1].firstInput << '|' << std::setw(25) << "STR " << '|' << std::setw(30) << this->table[i].parmQuantity << '|' << std::endl;
 						break;
 					}
 					}
@@ -212,7 +251,7 @@ namespace IT
 			*(idStream) << "=============================================================================" << std::endl;
 
 #pragma endregion
-			*(idStream) << "\n\n\n";
+			*(idStream) << "\n";
 #pragma region Variables
 
 			flagForFirst = false;
@@ -220,25 +259,23 @@ namespace IT
 			*(idStream) << "==================================================================================================================================================================" << std::endl;
 			*(idStream) << "| Переменные |" << std::endl;
 			*(idStream) << "==================================================================================================================================================================" << std::endl;
-			*(idStream) << '|' << std::setw(30) << "Имя родительского блока: " << '|' << std::setw(30) << "Идентификатор: " << '|' << std::setw(25) << "Тип данных: " << '|' << std::setw(25) << "Тип идентификатора: " << '|' << std::setw(25) << "Значение: " << '|' << std::setw(25) << "Длина строки: " << '|' << std::endl;
+			*(idStream) << '|' << std::setw(30) << "Имя родительского блока: " << '|' << std::setw(30) << "Идентификатор: " << '|' << std::setw(30) << "Индекс первого вхождения: " << '|' << std::setw(20) << "Индекс: " << '|' << std::setw(25) << "Тип данных: " << '|' << std::setw(25) << "Тип идентификатора: " << '|' << std::setw(25) << "Значение: " << '|' << std::setw(25) << "Длина строки: " << '|' << std::endl;
 			*(idStream) << "==================================================================================================================================================================" << std::endl;
 
 			for (int i = 0; i < this->size; i++)
 			{
 				if (this->table[i].idType == IT::ID_TYPE::V)
 				{
-
-
 					switch (this->table[i].idDataType)
 					{
 					case 1:
 					{
-						*(idStream) << '|' << std::setw(30) << this->table[i].parentFunc << '|' << std::setw(30) << this->table[i].id << '|' << std::setw(25) << "INT " << '|' << std::setw(25) << "V  " << '|' << std::setw(25) << this->table[i].value.valueInt << '|' << std::setw(25) << "- " << '|' << std::endl;
+						*(idStream) << '|' << std::setw(30) << this->table[i].parentFunc << '|' << std::setw(30) << this->table[i].id << '|' << std::setw(30) << this->table[i].firstInput << '|' << std::setw(20) << this->table[i].index << '|' << std::setw(25) << "INT " << '|' << std::setw(25) << "V  " << '|' << std::setw(25) << this->table[i].value.valueInt << '|' << std::setw(25) << "- " << '|' << std::endl;
 						break;
 					}
 					case 2:
 					{
-						*(idStream) << '|' << std::setw(30) << this->table[i].parentFunc << '|' << std::setw(30) << this->table[i].id << '|' << std::setw(25) << "STR " << '|' << std::setw(25) << "V  " << '|' << std::setw(25) << this->table[i].value.valueStr->str << '|' << std::setw(25) << (int)this->table[i].value.valueStr->len << '|' << std::endl;
+						*(idStream) << '|' << std::setw(30) << this->table[i].parentFunc << '|' << std::setw(30) << this->table[i].id << '|' << std::setw(30) << this->table[i].firstInput << '|' << std::setw(20) << this->table[i].index << '|' << std::setw(25) << "STR " << '|' << std::setw(25) << "V  " << '|' << std::setw(25) << this->table[i].value.valueStr->str << '|' << std::setw(25) << (int)this->table[i].value.valueStr->len << '|' << std::endl;
 						break;
 					}
 					}
@@ -248,17 +285,16 @@ namespace IT
 
 				if (this->table[i].idType == IT::ID_TYPE::P)
 				{
-
 					switch (this->table[i].idDataType)
 					{
 					case 1:
 					{
-						*(idStream) << '|' << std::setw(30) << this->table[i].parentFunc << '|' << std::setw(30) << this->table[i].id << '|' << std::setw(25) << "INT " << '|' << std::setw(25) << "P  " << '|' << std::setw(25) << this->table[i].value.valueInt << '|' << std::setw(25) << "- " << '|' << std::endl;
+						*(idStream) << '|' << std::setw(30) << this->table[i].parentFunc << '|' << std::setw(30) << this->table[i].id << '|' << std::setw(30) << this->table[i].firstInput << '|' << std::setw(20) << this->table[i].index << '|' << std::setw(25) << "INT " << '|' << std::setw(25) << "P  " << '|' << std::setw(25) << this->table[i].value.valueInt << '|' << std::setw(25) << "- " << '|' << std::endl;
 						break;
 					}
 					case 2:
 					{
-						*(idStream) << '|' << std::setw(30) << this->table[i].parentFunc << '|' << std::setw(30) << this->table[i].id << '|' << std::setw(25) << "STR " << '|' << std::setw(25) << "P  " << '|' << std::setw(25) << this->table[i].value.valueStr->str << '|' << std::setw(25) << (int)this->table[i].value.valueStr->len << '|' << std::endl;
+						*(idStream) << '|' << std::setw(30) << this->table[i].parentFunc << '|' << std::setw(30) << this->table[i].id << '|' << std::setw(30) << this->table[i].firstInput << '|' << std::setw(20) << this->table[i].index << '|' << std::setw(25) << "STR " << '|' << std::setw(25) << "P  " << '|' << std::setw(25) << this->table[i].value.valueStr->str << '|' << std::setw(25) << (int)this->table[i].value.valueStr->len << '|' << std::endl;
 						break;
 					}
 					}
@@ -269,7 +305,7 @@ namespace IT
 			}
 			*(idStream) << "==================================================================================================================================================================" << std::endl;
 #pragma endregion
-			* (idStream) << "\n\n\n";
+			* (idStream) << "\n";
 
 		}
 		else

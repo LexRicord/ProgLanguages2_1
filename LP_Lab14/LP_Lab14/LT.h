@@ -50,7 +50,6 @@ namespace LT
 		int size; // current < maxSize
 		Entry* table; // array of LT Enrties
 
-
 		Entry GetEntry( //get a str 
 			int n   //number of str
 		);

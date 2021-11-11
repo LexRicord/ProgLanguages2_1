@@ -98,7 +98,7 @@ namespace LT
 					if (this->table[i].lexToken == 'i') {
 						t = this->table[i].indexTI;
 						(*lex_stream) << this->table[i++].lexToken;
-						(*lex_stream) <<t;
+						(*lex_stream) << t;
 					}
 					else {
 						(*lex_stream) << this->table[i++].lexToken;

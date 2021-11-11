@@ -292,7 +292,7 @@ bool tokenAnalize(char* token, const int str_number, LT::LexTable& lexTable, IT:
 				Add(lexTable, { LEX_LITERAL, str_number, i });
 			else
 			{
-				idTable.Add({ "\0", (idTable.GetEntry(lexTable.GetEntry(lexTable.size - 2).indexTI).id[0] != '\0' && lexTable.GetEntry(lexTable.size - 1).lexToken == '=') ? idTable.GetEntry(lexTable.GetEntry(lexTable.size - 2).indexTI).id : "-" , IT::ID_DATA_TYPE::STR, IT::ID_TYPE::L });
+				idTable.Add({ "\0", (idTable.GetEntry(lexTable.GetEntry(lexTable.size - 2).indexTI).id[0] != '\0' && lexTable.GetEntry(lexTable.size - 1).lexToken == '=') ? idTable.GetEntry(lexTable.GetEntry(lexTable.size - 2).indexTI).id : "-" , IT::ID_DATA_TYPE::STR, IT::ID_TYPE::L, -1, -1 });
 				idTable.table[idTable.size - 1].value.valueStr->len = 0;
 				int i = 0, j = 0;
 				for (; token[i] != '\0'; i++)
@@ -321,7 +321,7 @@ bool tokenAnalize(char* token, const int str_number, LT::LexTable& lexTable, IT:
 				Add(lexTable, { LEX_LITERAL,str_number,i });
 			else
 			{
-				idTable.Add({ "\0", (idTable.GetEntry(lexTable.GetEntry(lexTable.size - 2).indexTI).id[0] != '\0' && lexTable.GetEntry(lexTable.size - 1).lexToken == '=') ? idTable.GetEntry(lexTable.GetEntry(lexTable.size - 2).indexTI).id : "-" , IT::ID_DATA_TYPE::INT, IT::ID_TYPE::L });
+				idTable.Add({ "\0", (idTable.GetEntry(lexTable.GetEntry(lexTable.size - 2).indexTI).id[0] != '\0' && lexTable.GetEntry(lexTable.size - 1).lexToken == '=') ? idTable.GetEntry(lexTable.GetEntry(lexTable.size - 2).indexTI).id : "-" , IT::ID_DATA_TYPE::INT, IT::ID_TYPE::L, -1, -1 });
 				idTable.table[idTable.size - 1].value.valueInt = atoi(token);
 				Add(lexTable, { LEX_LITERAL,str_number, idTable.size - 1 });
 			}
@@ -346,8 +346,8 @@ bool func_var(char* token, const int str_number, LT::LexTable& lexTable, IT::Ide
 	FST::FST* id = new FST::FST(FST_IDENTIFICATOR(token));
 	if (FST::execute(*id))
 	{
+		int tempIndex = 0;
 		bool Checked_id = false;
-
 		if (strcmp(token, "main") == 0 || ((lexTable.GetEntry(lexTable.size - 1).lexToken == LEX_FUNCTION &&
 				lexTable.GetEntry(lexTable.size - 2).lexToken == 't') &&
 				varTypeFlag.LT_posititon == lexTable.size - 2))
@@ -366,11 +366,11 @@ bool func_var(char* token, const int str_number, LT::LexTable& lexTable, IT::Ide
 			{
 				if (varTypeFlag.type == varTypeFlag::INT)
 				{
-					idTable.Add({ "\0", token, IT::ID_DATA_TYPE::INT, IT::ID_TYPE::F });
+					idTable.Add({ "\0", token, IT::ID_DATA_TYPE::INT, IT::ID_TYPE::F});
 				}
 				if (varTypeFlag.type == varTypeFlag::STR)
 				{
-					idTable.Add({ "\0", token, IT::ID_DATA_TYPE::STR, IT::ID_TYPE::F });
+					idTable.Add({ "\0", token, IT::ID_DATA_TYPE::STR, IT::ID_TYPE::F});
 				}
 				if (strcmp(token, "main") == 0)
 				{
@@ -400,13 +400,15 @@ bool func_var(char* token, const int str_number, LT::LexTable& lexTable, IT::Ide
 				{
 					if (idTable.IsId(token, idTable.GetEntry(lexTable.GetEntry(i).indexTI).id) == -1)
 					{
-						if (varTypeFlag.type == varTypeFlag::INT)
-						{
-							idTable.Add({ idTable.GetEntry(lexTable.GetEntry(i).indexTI).id,token, IT::ID_DATA_TYPE::INT, IT::ID_TYPE::V });
+						tempIndex = lexTable.GetEntry(i).indexTI;
+						if (varTypeFlag.type == varTypeFlag::INT){
+							idTable.Add({ idTable.GetEntry(lexTable.GetEntry(i).indexTI).id, token, IT::ID_DATA_TYPE::INT, IT::ID_TYPE::V, tempIndex, tempIndex });
+							idTable.table[(lexTable.GetEntry(i).indexTI)].index = lexTable.GetEntry(i).indexTI;
 						}
 						if (varTypeFlag.type == varTypeFlag::STR)
 						{
-							idTable.Add({ idTable.GetEntry(lexTable.GetEntry(i).indexTI).id,token , IT::ID_DATA_TYPE::STR, IT::ID_TYPE::V });
+							idTable.Add({ idTable.GetEntry(lexTable.GetEntry(i).indexTI).id, token , IT::ID_DATA_TYPE::STR, IT::ID_TYPE::V, tempIndex, tempIndex });
+							idTable.table[(lexTable.GetEntry(i).indexTI)].index = lexTable.GetEntry(i).indexTI;
 						}
 						varTypeFlag.LT_posititon = -1;
 						varTypeFlag.type = varTypeFlag::DEF;
@@ -434,18 +436,19 @@ bool func_var(char* token, const int str_number, LT::LexTable& lexTable, IT::Ide
 				bool type_check = (idTable.GetEntry(entry.indexTI).idType == IT::ID_TYPE::F);
 				if (entry.lexToken == LEX_ID && type_check)
 				{
+					tempIndex = lexTable.GetEntry(i).indexTI;
 					if (entry_minus_one.lexToken == LEX_FUNCTION && entry_minus_two.lexToken == 't')
 					{
 						if (idTable.IsId(token, idTable.GetEntry(lexTable.GetEntry(i).indexTI).id) == -1)
 						{
 							if (varTypeFlag.type == varTypeFlag::INT)
 							{
-								idTable.Add({ idTable.GetEntry(lexTable.GetEntry(i).indexTI).id,token , IT::ID_DATA_TYPE::INT, IT::ID_TYPE::P });
+								idTable.Add({ idTable.GetEntry(lexTable.GetEntry(i).indexTI).id , token , IT::ID_DATA_TYPE::INT, IT::ID_TYPE::P, tempIndex,tempIndex });
 								idTable.table[(lexTable.GetEntry(i).indexTI)].parmQuantity++;
 							}
 							if (varTypeFlag.type == varTypeFlag::STR)
 							{
-								idTable.Add({ idTable.GetEntry(lexTable.GetEntry(i).indexTI).id,token , IT::ID_DATA_TYPE::STR, IT::ID_TYPE::P });
+								idTable.Add({ idTable.GetEntry(lexTable.GetEntry(i).indexTI).id, token , IT::ID_DATA_TYPE::STR, IT::ID_TYPE::P, tempIndex,tempIndex });
 								idTable.table[(lexTable.GetEntry(i).indexTI)].parmQuantity++;
 							}
 							varTypeFlag.LT_posititon = -1;

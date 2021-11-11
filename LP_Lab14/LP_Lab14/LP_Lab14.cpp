@@ -23,7 +23,7 @@ int wmain(int argc, wchar_t* argv[])
 
 		lexTable.PrintLexTable(parm.in);
 		idTable.PrintIdTable(parm.in);
-
+		int i = 0;
 		Delete(lexTable);
 		Delete(idTable);
 

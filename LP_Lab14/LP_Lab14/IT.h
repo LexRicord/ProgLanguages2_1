@@ -18,7 +18,9 @@ namespace IT
 		char parentFunc[ID_MAXSIZE + 5];
 		char id[ID_MAXSIZE + 5];					// id(shortened to ID_MAXSIZE)
 		ID_DATA_TYPE idDataType;					
-		ID_TYPE idType;						
+		ID_TYPE idType;			
+		int firstInput;
+		int index;
 		union
 		{
 			int valueInt;										
@@ -31,7 +33,9 @@ namespace IT
 		int parmQuantity;
 		Entry();
 		Entry(const char* parrentFunc, const char* id, ID_DATA_TYPE idDataType, ID_TYPE idType);
+		Entry(const char* parrentFunc, const char* id, ID_DATA_TYPE idDataType, ID_TYPE idType, int firstInput , int index);
 		Entry(char* parrentFunc, char* id, ID_DATA_TYPE idDataType, ID_TYPE idType);
+		Entry(char* parrentFunc, char* id, ID_DATA_TYPE idDataType, ID_TYPE idType, int firstInput , int index);
 	};
 
 	struct IdentTable 
