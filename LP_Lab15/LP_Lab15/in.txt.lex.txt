@@ -1,0 +1,35 @@
+
+1	tfi0(ti1,ti2)
+2	{
+3	dti3;
+4	i=i1*i1i2v  ;
+5	ri3;
+6	};
+7	tfi4(ti5,ti6)
+8	{
+9	ti7;
+10	dtfi8(ti9,ti10,
+11	ti11);
+12	i=i8(i5,l,l)i8(i5,l,l)vi6vi8(i5,l,l)v;
+13	ri7;
+14	};
+15	i
+16	{
+17	dti19;
+18	dti20;
+19	dti21;
+20	dti22;
+21	dti23;
+22	dti24;
+23	dtfi25(ti26);
+24	i=l;
+25	i=l;
+26	i=l;
+27	i=l;
+28	pl;
+29	i=i0(i19,i20);
+30	i=i4(i22,i23);
+31	pi21;
+32	pi24;
+33	rl;
+34	};

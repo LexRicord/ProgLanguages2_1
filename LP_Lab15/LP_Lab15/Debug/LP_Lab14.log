@@ -1,0 +1,48 @@
+﻿Сборка начата 11.11.2021 17:56:48.
+Уровень детализации журнала: Normal.     1>Проект "E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\LP_Lab14.vcxproj" в узле 2 (целевые объекты Build).
+     1>E:\soft\cash\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (LP_Lab14.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+     1>InitializeBuildStatus:
+         Обращение к "Debug\LP_Lab15.tlog\unsuccessfulbuild".
+       ClCompile:
+         E:\soft\cash\VC\Tools\MSVC\14.28.29333\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /Gd /TP /analyze- /FC /errorReport:prompt PolishNotation.cpp
+         PolishNotation.cpp
+     1>E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\LT.h(29,1): warning C4005: LEX_STAR: изменение макроопределения
+       E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\LT.h(23): message : см. предыдущее определение "LEX_STAR"
+     1>E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\PolishNotation.cpp(21): warning C4715: PLN::Stack::push: значение возвращается не при всех путях выполнения
+     1>E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\PolishNotation.cpp(33): warning C4715: PLN::Stack::push: значение возвращается не при всех путях выполнения
+     1>E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\PolishNotation.cpp(45): warning C4172: возвращение адреса локальной или временной переменной : temp
+       Link:
+         E:\soft\cash\VC\Tools\MSVC\14.28.29333\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"E:\code\univ\ProgLanguages\LP_Lab14\Debug\LP_Lab15.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"E:\code\univ\ProgLanguages\LP_Lab14\Debug\LP_Lab15.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\code\univ\ProgLanguages\LP_Lab14\Debug\LP_Lab15.lib" /MACHINE:X86 Debug\Error.obj
+         Debug\FST.obj
+         Debug\In.obj
+         Debug\IT.obj
+         Debug\Log.obj
+         Debug\LP_Lab15.obj
+         Debug\LT.obj
+         Debug\Parm.obj
+         Debug\PolishNotation.obj
+         Debug\tokenAnalisys.obj
+         LP_Lab14.vcxproj -> E:\code\univ\ProgLanguages\LP_Lab14\Debug\LP_Lab15.exe
+       FinalizeBuildStatus:
+         Файл "Debug\LP_Lab15.tlog\unsuccessfulbuild" удаляется.
+         Обращение к "Debug\LP_Lab15.tlog\LP_Lab15.lastbuildstate".
+     1>Сборка проекта "E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\LP_Lab14.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+       "E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\LP_Lab14.vcxproj" (целевой объект Build ) (1) ->
+       (Целевой объект PrepareForBuild) -> 
+         E:\soft\cash\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (LP_Lab14.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+
+
+       "E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\LP_Lab14.vcxproj" (целевой объект Build ) (1) ->
+       (Целевой объект ClCompile) -> 
+         E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\LT.h(29,1): warning C4005: LEX_STAR: изменение макроопределения
+         E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\PolishNotation.cpp(21): warning C4715: PLN::Stack::push: значение возвращается не при всех путях выполнения
+         E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\PolishNotation.cpp(33): warning C4715: PLN::Stack::push: значение возвращается не при всех путях выполнения
+         E:\code\univ\ProgLanguages\LP_Lab14\LP_Lab14\PolishNotation.cpp(45): warning C4172: возвращение адреса локальной или временной переменной : temp
+
+    Предупреждений: 5
+    Ошибок: 0
+
+Прошло времени 00:00:01.26
