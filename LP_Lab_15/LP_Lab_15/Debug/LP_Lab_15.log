@@ -1,0 +1,91 @@
+﻿Сборка начата 16.12.2021 19:18:10.
+Уровень детализации журнала: Normal.     1>Проект "D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LP_Lab_15.vcxproj" в узле 2 (целевые объекты Build).
+     1>InitializeBuildStatus:
+         Создание "Debug\LP_Lab_15.tlog\unsuccessfulbuild", так как было задано "AlwaysCreate".
+       ClCompile:
+         E:\soft\cash\VC\Tools\MSVC\14.28.29333\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /Gd /TP /analyze- /FC /errorReport:prompt Error.cpp FST.cpp IT.cpp In.cpp LP_Lab_15.cpp LT.cpp Log.cpp Parm.cpp tokenAnalisys.cpp
+         Error.cpp
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+       D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(17): message : см. предыдущее определение "LEX_STRLEN"
+         FST.cpp
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+       D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(17): message : см. предыдущее определение "LEX_STRLEN"
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\FST.cpp(59,36): warning C4267: инициализация: преобразование из "size_t" в "short"; возможна потеря данных
+         IT.cpp
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+       D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(17): message : см. предыдущее определение "LEX_STRLEN"
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(113,36): warning C4267: =: преобразование из "size_t" в "unsigned char"; возможна потеря данных
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(132,36): warning C4267: =: преобразование из "size_t" в "unsigned char"; возможна потеря данных
+         In.cpp
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+       D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(17): message : см. предыдущее определение "LEX_STRLEN"
+         LP_Lab_15.cpp
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+       D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(17): message : см. предыдущее определение "LEX_STRLEN"
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LP_Lab_15.cpp(33,22): warning C4101: lt_position: неиспользованная локальная переменная
+         LT.cpp
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+       D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(17): message : см. предыдущее определение "LEX_STRLEN"
+         Log.cpp
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+       D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(17): message : см. предыдущее определение "LEX_STRLEN"
+         Parm.cpp
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+       D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(17): message : см. предыдущее определение "LEX_STRLEN"
+         tokenAnalisys.cpp
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+       D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(17): message : см. предыдущее определение "LEX_STRLEN"
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\tokenAnalisys.cpp(135,20): warning C4305: =: усечение из "int" в "char"
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\tokenAnalisys.cpp(135,16): warning C4309: =: усечение константного значения
+         Создание кода...
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.cpp(27): warning C4715: LT::LexTable::GetEntry: значение возвращается не при всех путях выполнения
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(187): warning C4172: возвращение адреса локальной или временной переменной : buffer
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(194): warning C4172: возвращение адреса локальной или временной переменной : buffer
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(250): warning C4715: IT::IdTable::GetEntry: значение возвращается не при всех путях выполнения
+     1>D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(203): warning C4172: возвращение адреса локальной или временной переменной : buffer
+       Link:
+         E:\soft\cash\VC\Tools\MSVC\14.28.29333\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"D:\repos\ProgLanguages2_1\LP_Lab_15\Debug\LP_Lab_15.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"D:\repos\ProgLanguages2_1\LP_Lab_15\Debug\LP_Lab_15.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\repos\ProgLanguages2_1\LP_Lab_15\Debug\LP_Lab_15.lib" /MACHINE:X86 Debug\Error.obj
+         Debug\FST.obj
+         Debug\In.obj
+         Debug\IT.obj
+         Debug\Log.obj
+         Debug\LP_Lab_15.obj
+         Debug\LT.obj
+         Debug\Parm.obj
+         Debug\PN.obj
+         Debug\tokenAnalisys.obj
+         LP_Lab_15.vcxproj -> D:\repos\ProgLanguages2_1\LP_Lab_15\Debug\LP_Lab_15.exe
+       FinalizeBuildStatus:
+         Файл "Debug\LP_Lab_15.tlog\unsuccessfulbuild" удаляется.
+         Обращение к "Debug\LP_Lab_15.tlog\LP_Lab_15.lastbuildstate".
+     1>Сборка проекта "D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LP_Lab_15.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+       "D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LP_Lab_15.vcxproj" (целевой объект Build ) (1) ->
+       (Целевой объект ClCompile) -> 
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\FST.cpp(59,36): warning C4267: инициализация: преобразование из "size_t" в "short"; возможна потеря данных
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(113,36): warning C4267: =: преобразование из "size_t" в "unsigned char"; возможна потеря данных
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(132,36): warning C4267: =: преобразование из "size_t" в "unsigned char"; возможна потеря данных
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LP_Lab_15.cpp(33,22): warning C4101: lt_position: неиспользованная локальная переменная
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.h(28,1): warning C4005: LEX_STRLEN: изменение макроопределения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\tokenAnalisys.cpp(135,20): warning C4305: =: усечение из "int" в "char"
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\tokenAnalisys.cpp(135,16): warning C4309: =: усечение константного значения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\LT.cpp(27): warning C4715: LT::LexTable::GetEntry: значение возвращается не при всех путях выполнения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(187): warning C4172: возвращение адреса локальной или временной переменной : buffer
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(194): warning C4172: возвращение адреса локальной или временной переменной : buffer
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(250): warning C4715: IT::IdTable::GetEntry: значение возвращается не при всех путях выполнения
+         D:\repos\ProgLanguages2_1\LP_Lab_15\LP_Lab_15\IT.cpp(203): warning C4172: возвращение адреса локальной или временной переменной : buffer
+
+    Предупреждений: 20
+    Ошибок: 0
+
+Прошло времени 00:00:05.73
