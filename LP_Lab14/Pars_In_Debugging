@@ -1,0 +1,2 @@
+LPLab14.exe -in:E:\...\LPLab14\LPLab14\in.txt - required 
+-out:E:\...\LPLab14\LPLab14\out.txt -log:E:\...\LPLab14\LPLab14\log.txt - unrequired 
